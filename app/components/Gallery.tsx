@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from 'next/image';
 
 const imageVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -55,7 +56,7 @@ export default function Gallery() {
           return (
             <motion.div
               key={num}
-              className="rounded-xl overflow-hidden shadow-xl group relative cursor-pointer"
+              className="relative rounded-xl overflow-hidden shadow-xl group cursor-pointer aspect-square"
               custom={index}
               initial="hidden"
               whileInView="visible"
@@ -68,11 +69,13 @@ export default function Gallery() {
                 if (e.key === "Enter") openModal(imgSrc);
               }}
             >
-              <img
+              <Image
                 src={imgSrc}
                 alt={`Gallery image ${num}`}
-                className="w-full h-full object-cover aspect-square transform transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110"
+                fill
+                className="object-cover transform transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110"
                 style={{ transformOrigin: "center" }}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition duration-300"></div>
             </motion.div>
@@ -88,12 +91,18 @@ export default function Gallery() {
           role="dialog"
           aria-modal="true"
         >
-          <img
-            src={modalImg}
-            alt="Full view"
-            className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-lg"
+          <div
+            className="relative max-w-[90vw] max-h-[90vh] w-auto h-auto"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <Image
+              src={modalImg}
+              alt="Full view"
+              fill
+              className="object-contain rounded-lg shadow-lg"
+              sizes="90vw"
+            />
+          </div>
         </div>
       )}
     </section>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PortfolioPage() {
   const imageDetails = [
     {
@@ -42,17 +44,21 @@ export default function PortfolioPage() {
         {imageDetails.map(({ src, title, description }, index) => (
           <div
             key={index}
-            className={`relative rounded-lg overflow-hidden group shadow-lg hover:shadow-2xl transition-all border-4 border-white`}
+            className="relative rounded-lg overflow-hidden group shadow-lg hover:shadow-2xl transition-all border-4 border-white"
           >
-            <img
-              src={src}
-              alt={title}
-              className={`w-full h-full object-cover aspect-[4/3] transform transition-transform duration-300 ${
-                src === "/gallery/2.jpg"
-                  ? "group-hover:scale-95" // Zoom out for 2.jpg
-                  : "group-hover:scale-105" // Zoom in for others
-              }`}
-            />
+            <div className="relative w-full aspect-[4/3]">
+              <Image
+                src={src}
+                alt={title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className={`object-cover transform transition-transform duration-300 ${
+                  src === "/gallery/2.jpg"
+                    ? "group-hover:scale-95"
+                    : "group-hover:scale-105"
+                }`}
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-4 left-4 z-10">
               <h3 className="text-xl font-semibold text-white">{title}</h3>
