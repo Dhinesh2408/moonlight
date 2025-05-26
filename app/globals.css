@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply bg-black text-purple font-sans;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typing Effect */
+.typing-effect {
+  font-family: 'Playfair Display', serif;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #199ba6; /* updated cursor color to pond water blue */
+  animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #199ba6; /* pond water blue */
+  }
+}
+
+/* Utility classes */
+.card-style {
+  @apply rounded-xl p-6 text-center shadow-md hover:shadow-xl transition bg-black text-white border border-[#199ba6];
+}
+
+.section-title {
+  @apply text-4xl font-bold text-center mb-8 text-[#199ba6];
+}
+
+/* Button styles */
+.button-primary {
+  @apply px-6 py-3 text-white rounded-md transition;
+  background-color: #199ba6;
+}
+
+.button-primary:hover {
+  background-color: #147e89;
+}
