@@ -33,7 +33,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://wa.me/917708842521"
+                href="https://wa.me/919790509423"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white transition-colors duration-300"
@@ -59,7 +59,7 @@ export default function Footer() {
           <p className="text-white text-base">
             Phone:{" "}
             <a
-              href="tel:+917708842521"
+              href="tel:+919790509423"
               className="hover:text-white transition-colors duration-300"
             >
               +91 9790509423
